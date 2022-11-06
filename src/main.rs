@@ -19,9 +19,14 @@ use tantivy::schema::{Schema, TEXT, STORED};
 
 fn main() {
     let mut schema_builder = Schema::builder();
+    let identifier_field = schema_builder.add_text_field("id", STORED);
     let date_field = schema_builder.add_text_field("date", TEXT | STORED);
-    let machine_field = schema_builder.add_text_field("machine", TEXT | STORED);
-    let identifier_field = schema_builder.add_text_field("id", TEXT | STORED);
+    let source_id_field = schema_builder.add_text_field("source_id", STORED);
+    let source_name_field = schema_builder.add_text_field("source_name", TEXT | STORED);
+    let source_ip_field = schema_builder.add_text_field("source_ip", TEXT | STORED);
+    let facility_field = schema_builder.add_text_field("facility_name", TEXT | STORED);
+    let severity_field = schema_builder.add_text_field("severity", STORED);
+    let program_field = schema_builder.add_text_field("program", TEXT | STORED);
     let body_field = schema_builder.add_text_field("body", TEXT | STORED);
     let schema = schema_builder.build();
 
